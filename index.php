@@ -19,7 +19,7 @@ $sent = isset($_GET['sent']) ? $_GET['sent'] : null;
 
 <!-- ==================== ABOUT ==================== -->
 <section class="about" id="about">
-  <div class="container">
+  <div class="container reveal">
     <span class="eyebrow">About Us</span>
     <h2>Small studio, three shelves</h2>
     <!-- PLACEHOLDER: replace with real About Us copy -->
@@ -32,8 +32,7 @@ $sent = isset($_GET['sent']) ? $_GET['sent'] : null;
     </p>
     <p>
       Below you'll find everything we currently make: apps, books, and
-      games. Each one links out to wherever it actually lives — the app
-      store, Amazon, or the server itself.
+      games. Tap a category to see everything in it.
     </p>
   </div>
 </section>
@@ -41,102 +40,67 @@ $sent = isset($_GET['sent']) ? $_GET['sent'] : null;
 <!-- ==================== APPS ==================== -->
 <section id="apps">
   <div class="container">
-    <div class="category-header">
+    <div class="category-header reveal">
       <span class="eyebrow">Apps</span>
       <h2>Apps</h2>
       <p>Tools we built because we needed them ourselves.</p>
     </div>
 
-    <div class="item-grid" id="apps-grid">
-      <!-- PLACEHOLDER: replace with real app store link -->
-      <a class="item-box" href="#" target="_blank" rel="noopener">
-        <div class="item-media media-apps" aria-hidden="true">SFX Library icon</div>
-        <h3 class="item-title">SFX Library</h3>
-        <p class="item-desc">A curated sound-effects library for creators, ready to browse, preview, and drop into your project.</p>
-        <span class="item-arrow">View on App Store <span class="arrow-glyph" aria-hidden="true">&rarr;</span></span>
-      </a>
-
-      <!-- PLACEHOLDER: replace with real app store link -->
-      <a class="item-box" href="#" target="_blank" rel="noopener">
-        <div class="item-media media-apps" aria-hidden="true">SFX Library+ icon</div>
-        <h3 class="item-title">SFX Library+</h3>
-        <p class="item-desc">The Pro edition: a larger catalog, offline packs, and extra export options for power users.</p>
-        <span class="item-arrow">View on App Store <span class="arrow-glyph" aria-hidden="true">&rarr;</span></span>
-      </a>
-    </div>
+    <a class="category-tile reveal" href="/apps">
+      <div class="category-tile-media media-apps" aria-hidden="true">Apps icon</div>
+      <div class="category-tile-content">
+        <h3>Browse Apps</h3>
+        <p>SFX Library, SFX Library+, and whatever we build next.</p>
+      </div>
+      <span class="tile-arrow" aria-hidden="true">&rarr;</span>
+    </a>
   </div>
 </section>
 
 <!-- ==================== BOOKS ==================== -->
 <section id="books">
   <div class="container">
-    <div class="category-header">
+    <div class="category-header reveal">
       <span class="eyebrow">Books</span>
       <h2>Books</h2>
       <p>Stories and notebooks, written and self-published.</p>
     </div>
 
-    <div class="item-grid" id="books-grid">
-      <!-- PLACEHOLDER: replace with real Amazon link -->
-      <a class="item-box" href="#" target="_blank" rel="noopener">
-        <div class="item-media media-books" aria-hidden="true">Leo Notebook cover</div>
-        <h3 class="item-title">Leo Notebook</h3>
-        <p class="item-desc">A guided notebook for daily reflection and planning, designed to be simple enough to actually stick with.</p>
-        <span class="item-arrow">View on Amazon <span class="arrow-glyph" aria-hidden="true">&rarr;</span></span>
-      </a>
-
-      <!-- PLACEHOLDER: replace with real Amazon link -->
-      <a class="item-box" href="#" target="_blank" rel="noopener">
-        <div class="item-media media-books" aria-hidden="true">The School Rewind cover</div>
-        <h3 class="item-title">The School Rewind</h3>
-        <p class="item-desc">A nostalgic look back at school life, told with humor and heart for anyone who's ever sat through a hallway pass.</p>
-        <span class="item-arrow">View on Amazon <span class="arrow-glyph" aria-hidden="true">&rarr;</span></span>
-      </a>
-
-      <button type="button" class="view-all-box" id="books-view-all"
-              data-target="#books-extra" aria-expanded="false"
-              data-label-more="View All Books" data-label-less="Show Less">
-        <span class="view-all-label">View All Books</span>
-        <span class="chevron-down" aria-hidden="true"></span>
-      </button>
-
-      <div id="books-extra" class="extra-items-wrapper">
-        <!-- PLACEHOLDER: replace with real Amazon link -->
-        <a class="item-box extra-item" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-          <div class="item-media media-books" aria-hidden="true">The Coin cover</div>
-          <h3 class="item-title">The Coin</h3>
-          <p class="item-desc">A short story about a single coin that changes hands — and changes something in everyone who holds it.</p>
-          <span class="item-arrow">View on Amazon <span class="arrow-glyph" aria-hidden="true">&rarr;</span></span>
-        </a>
+    <a class="category-tile reveal" href="/books">
+      <div class="category-tile-media media-books" aria-hidden="true">Books icon</div>
+      <div class="category-tile-content">
+        <h3>Browse Books</h3>
+        <p>Leo Notebook, The School Rewind, The Coin, and more on the way.</p>
       </div>
-    </div>
+      <span class="tile-arrow" aria-hidden="true">&rarr;</span>
+    </a>
   </div>
 </section>
 
 <!-- ==================== GAMES ==================== -->
 <section id="games">
   <div class="container">
-    <div class="category-header">
+    <div class="category-header reveal">
       <span class="eyebrow">Games</span>
       <h2>Games</h2>
       <p>A server we run for fun — come say hi.</p>
     </div>
 
-    <div class="item-grid single-item" id="games-grid">
-      <a class="item-box" href="https://orcsworld.net" target="_blank" rel="noopener">
-        <div class="item-media media-games" aria-hidden="true">Orc's World banner</div>
-        <h3 class="item-title">Orc's World</h3>
-        <p class="item-desc">Our indie Minecraft server — survival, community builds, and the occasional orc invasion. Visit the site for connection details.</p>
-        <span class="item-arrow">Visit Orc's World <span class="arrow-glyph" aria-hidden="true">&rarr;</span></span>
-      </a>
-    </div>
+    <a class="category-tile reveal" href="/games">
+      <div class="category-tile-media media-games" aria-hidden="true">Games icon</div>
+      <div class="category-tile-content">
+        <h3>Browse Games</h3>
+        <p>Orc's World, our indie Minecraft server.</p>
+      </div>
+      <span class="tile-arrow" aria-hidden="true">&rarr;</span>
+    </a>
   </div>
 </section>
 
 <!-- ==================== CONTACT ==================== -->
 <section class="contact" id="contact">
   <div class="container">
-    <div class="category-header">
+    <div class="category-header reveal">
       <span class="eyebrow">Contact</span>
       <h2>Get in touch</h2>
       <p>Questions, feedback, or just want to say hi? Send us a message.</p>
@@ -148,7 +112,7 @@ $sent = isset($_GET['sent']) ? $_GET['sent'] : null;
       <div class="form-message error" role="alert">Something went wrong sending your message. Please check the form and try again.</div>
     <?php endif; ?>
 
-    <form class="contact-form" action="/contact.php" method="POST" novalidate>
+    <form class="contact-form reveal" action="/contact.php" method="POST" novalidate>
       <div class="form-row">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required autocomplete="name">

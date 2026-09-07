@@ -1,8 +1,8 @@
 /**
  * JRWS LLC — main.js
  * Minimal vanilla JS: smooth-scroll for in-page anchor links, and a
- * reusable "View All" expand/collapse toggle used by the Apps/Books/Games
- * item-grid pattern. No frameworks, no build step.
+ * scroll-triggered reveal animation for `.reveal` elements. No
+ * frameworks, no build step.
  */
 
 (function () {
@@ -24,57 +24,37 @@
   });
 
   /**
-   * Reusable "View All [Category]" toggle.
-   *
-   * Markup contract:
-   *   <button class="view-all-box" data-target="#books-extra"
-   *           aria-expanded="false" data-label-more="View All Books"
-   *           data-label-less="Show Less">
-   *     <span class="view-all-label">View All Books</span>
-   *     <span class="chevron-down" aria-hidden="true"></span>
-   *   </button>
-   *   <div id="books-extra">
-   *     <a class="item-box extra-item">...</a>
-   *     <a class="item-box extra-item">...</a>  (any number of items)
-   *   </div>
-   *
-   * Works for any number of additional items revealed under the toggle,
-   * so adding a 4th/5th product later needs no JS changes.
+   * Reveal-on-scroll: any element with class "reveal" fades/slides in
+   * once it enters the viewport. Falls back to showing everything
+   * immediately if IntersectionObserver isn't available.
    */
-  function initViewAllToggles() {
-    var toggles = document.querySelectorAll(".view-all-box[data-target]");
+  function initScrollReveal() {
+    var targets = document.querySelectorAll(".reveal");
+    if (!targets.length) return;
 
-    toggles.forEach(function (toggle) {
-      toggle.addEventListener("click", function () {
-        var targetSelector = toggle.getAttribute("data-target");
-        var wrapper = document.querySelector(targetSelector);
-        if (!wrapper) return;
+    if (!("IntersectionObserver" in window)) {
+      targets.forEach(function (el) {
+        el.classList.add("in-view");
+      });
+      return;
+    }
 
-        var items = wrapper.querySelectorAll(".extra-item");
-        var isExpanded = toggle.getAttribute("aria-expanded") === "true";
-        var nowExpanded = !isExpanded;
-
-        toggle.setAttribute("aria-expanded", String(nowExpanded));
-
-        var label = toggle.querySelector(".view-all-label");
-        if (label) {
-          var moreText = toggle.getAttribute("data-label-more") || label.textContent;
-          var lessText = toggle.getAttribute("data-label-less") || "Show Less";
-          label.textContent = nowExpanded ? lessText : moreText;
-        }
-
-        items.forEach(function (item) {
-          item.classList.toggle("is-visible", nowExpanded);
-          item.setAttribute("aria-hidden", String(!nowExpanded));
-          if (nowExpanded) {
-            item.removeAttribute("tabindex");
-          } else {
-            item.setAttribute("tabindex", "-1");
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
           }
         });
-      });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    targets.forEach(function (el) {
+      observer.observe(el);
     });
   }
 
-  document.addEventListener("DOMContentLoaded", initViewAllToggles);
+  document.addEventListener("DOMContentLoaded", initScrollReveal);
 })();
