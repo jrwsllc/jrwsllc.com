@@ -151,7 +151,7 @@ require __DIR__ . '/includes/header.php';
   <div class="container">
     <a class="subpage-logo-link" href="/">
       <img src="/assets/img/logo.png" alt="JRWS LLC home" width="80" height="80">
-      <span>Back to JRWS LLC</span>
+      <span>Back to Main Menu</span>
     </a>
   </div>
 </header>

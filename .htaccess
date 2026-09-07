@@ -1,14 +1,15 @@
 # ============================================================
 # Clean URLs
 # ============================================================
-# Serve apps.php/books.php/games.php/about.php/contact.php at
-# /apps, /books, /games, /about, /contact without exposing the
-# .php extension. Plain Apache mod_rewrite — no framework, no
-# build step, works as-is on Plesk/Apache shared hosting.
+# Serve apps.php/books.php/games.php/about.php/contact.php/terms.php/
+# privacy.php at /apps, /books, /games, /about, /contact, /terms,
+# /privacy without exposing the .php extension. Plain Apache
+# mod_rewrite — no framework, no build step, works as-is on
+# Plesk/Apache shared hosting.
 
 RewriteEngine On
 
-# /apps -> apps.php (and same for books, games, about, contact) if the .php file exists
+# /apps -> apps.php (and same for the other page names) if the .php file exists
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{DOCUMENT_ROOT}/$1.php -f
@@ -19,7 +20,7 @@ RewriteRule ^([A-Za-z0-9_-]+)/?$ $1.php [L]
 # handles POST (the form submit) and a 301 would drop the POST body,
 # but that's never a risk here since the condition requires GET.
 RewriteCond %{REQUEST_METHOD} GET
-RewriteCond %{THE_REQUEST} \s/+(apps|books|games|about|contact)\.php[\s?] [NC]
+RewriteCond %{THE_REQUEST} \s/+(apps|books|games|about|contact|terms|privacy)\.php[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
 
 # ============================================================
