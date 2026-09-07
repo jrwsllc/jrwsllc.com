@@ -47,6 +47,10 @@ require __DIR__ . '/includes/header.php';
             <a class="badge-link" href="#" target="_blank" rel="noopener">
               <img src="/assets/img/google-play-badge.svg" alt="Get it on Google Play" width="180" height="53">
             </a>
+            <!-- PLACEHOLDER: replace with real Amazon Appstore link -->
+            <a class="badge-link" href="#" target="_blank" rel="noopener">
+              <img src="/assets/img/amazon-appstore-badge.png" alt="Available at Amazon Appstore" width="902" height="312">
+            </a>
           </div>
         </div>
       </dialog>
@@ -72,6 +76,10 @@ require __DIR__ . '/includes/header.php';
             <!-- PLACEHOLDER: replace with real Google Play link -->
             <a class="badge-link" href="#" target="_blank" rel="noopener">
               <img src="/assets/img/google-play-badge.svg" alt="Get it on Google Play" width="180" height="53">
+            </a>
+            <!-- PLACEHOLDER: replace with real Amazon Appstore link -->
+            <a class="badge-link" href="#" target="_blank" rel="noopener">
+              <img src="/assets/img/amazon-appstore-badge.png" alt="Available at Amazon Appstore" width="902" height="312">
             </a>
           </div>
         </div>
