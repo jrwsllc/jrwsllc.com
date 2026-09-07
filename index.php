@@ -18,7 +18,7 @@ $sent = isset($_GET['sent']) ? $_GET['sent'] : null;
 </section>
 
 <!-- ==================== ABOUT ==================== -->
-<section class="about" id="about">
+<section class="about dot-grid" id="about">
   <div class="container reveal">
     <span class="eyebrow">About Us</span>
     <h2>Small studio, three shelves</h2>
@@ -37,68 +37,46 @@ $sent = isset($_GET['sent']) ? $_GET['sent'] : null;
   </div>
 </section>
 
-<!-- ==================== APPS ==================== -->
-<section id="apps">
-  <div class="container">
-    <div class="category-header reveal">
-      <span class="eyebrow">Apps</span>
-      <h2>Apps</h2>
-      <p>Tools we built because we needed them ourselves.</p>
-    </div>
+<div class="divider" aria-hidden="true"></div>
 
-    <a class="category-tile reveal" href="/apps">
-      <div class="category-tile-media media-apps" aria-hidden="true">Apps icon</div>
-      <div class="category-tile-content">
-        <h3>Browse Apps</h3>
-        <p>SFX Library, SFX Library+, and whatever we build next.</p>
-      </div>
-      <span class="tile-arrow" aria-hidden="true">&rarr;</span>
-    </a>
+<!-- ==================== EXPLORE (Apps / Books / Games) ==================== -->
+<section id="explore">
+  <div class="container">
+    <div class="category-grid stagger">
+      <a class="category-square sq-apps reveal" href="/apps" id="apps">
+        <div class="square-icon media-apps" aria-hidden="true">Apps icon</div>
+        <div class="square-content">
+          <h3>Apps</h3>
+          <p>SFX Library, SFX Library+, and whatever we build next.</p>
+        </div>
+        <span class="tile-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="category-square sq-books reveal" href="/books" id="books">
+        <div class="square-icon media-books" aria-hidden="true">Books icon</div>
+        <div class="square-content">
+          <h3>Books</h3>
+          <p>Leo Notebook, The School Rewind, The Coin, and more on the way.</p>
+        </div>
+        <span class="tile-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="category-square sq-games reveal" href="/games" id="games">
+        <div class="square-icon media-games" aria-hidden="true">Games icon</div>
+        <div class="square-content">
+          <h3>Games</h3>
+          <p>Orc's World, our indie Minecraft server.</p>
+        </div>
+        <span class="tile-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- ==================== BOOKS ==================== -->
-<section id="books">
-  <div class="container">
-    <div class="category-header reveal">
-      <span class="eyebrow">Books</span>
-      <h2>Books</h2>
-      <p>Stories and notebooks, written and self-published.</p>
-    </div>
-
-    <a class="category-tile reveal" href="/books">
-      <div class="category-tile-media media-books" aria-hidden="true">Books icon</div>
-      <div class="category-tile-content">
-        <h3>Browse Books</h3>
-        <p>Leo Notebook, The School Rewind, The Coin, and more on the way.</p>
-      </div>
-      <span class="tile-arrow" aria-hidden="true">&rarr;</span>
-    </a>
-  </div>
-</section>
-
-<!-- ==================== GAMES ==================== -->
-<section id="games">
-  <div class="container">
-    <div class="category-header reveal">
-      <span class="eyebrow">Games</span>
-      <h2>Games</h2>
-      <p>A server we run for fun — come say hi.</p>
-    </div>
-
-    <a class="category-tile reveal" href="/games">
-      <div class="category-tile-media media-games" aria-hidden="true">Games icon</div>
-      <div class="category-tile-content">
-        <h3>Browse Games</h3>
-        <p>Orc's World, our indie Minecraft server.</p>
-      </div>
-      <span class="tile-arrow" aria-hidden="true">&rarr;</span>
-    </a>
-  </div>
-</section>
+<div class="divider" aria-hidden="true"></div>
 
 <!-- ==================== CONTACT ==================== -->
-<section class="contact" id="contact">
+<section class="contact dot-grid" id="contact">
   <div class="container">
     <div class="category-header reveal">
       <span class="eyebrow">Contact</span>
