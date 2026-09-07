@@ -4,7 +4,7 @@
  */
 ?>
   <footer class="site-footer">
-    <div class="footer-inner">
+    <div class="container">
       <div class="footer-top">
         <div class="footer-col footer-col-brand">
           <img class="footer-logo" src="/assets/img/logo.png" alt="JRWS LLC" width="56" height="56">
@@ -41,6 +41,7 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js"></script>
+  <?php $jsVersion = @filemtime(__DIR__ . '/../assets/js/main.js') ?: '1'; ?>
+  <script src="/assets/js/main.js?v=<?php echo $jsVersion; ?>"></script>
 </body>
 </html>
