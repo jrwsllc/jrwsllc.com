@@ -395,6 +395,8 @@ textarea:focus-visible {
   color: var(--color-white);
 }
 
+/* Same solid coral circle + white glyph used everywhere else
+   (item-arrow, text-link's arrow-glyph) for a consistent look. */
 .tile-arrow {
   position: absolute;
   right: 24px;
@@ -405,8 +407,8 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--color-ink);
+  background: var(--color-accent);
+  color: var(--color-white);
   font-size: 1.2rem;
   font-weight: 700;
   transition: transform 0.25s ease, background 0.25s ease;
@@ -415,7 +417,7 @@ textarea:focus-visible {
 .category-square:hover .tile-arrow,
 .category-square:focus-visible .tile-arrow {
   transform: translate(4px, -4px);
-  background: var(--color-white);
+  background: var(--color-accent-dark);
 }
 
 /* --------------------------------------------------------------------
@@ -478,12 +480,8 @@ textarea:focus-visible {
 }
 
 .link-tile .tile-arrow {
-  position: absolute;
-  right: 24px;
   bottom: 50%;
   transform: translateY(50%);
-  background: var(--color-accent);
-  color: var(--color-white);
 }
 
 .link-tile:hover .tile-arrow,
@@ -669,8 +667,9 @@ dialog.link-dialog[open] {
 
 .dialog-links {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
 }
 
