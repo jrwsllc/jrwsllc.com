@@ -43,9 +43,9 @@ require __DIR__ . '/includes/header.php';
             <a class="badge-link" href="#" target="_blank" rel="noopener">
               <img src="/assets/img/app-store-badge.svg" alt="Download on the App Store" width="135" height="40">
             </a>
-            <!-- PLACEHOLDER: replace with a real link, or delete this row if there's only one place to get the app -->
-            <a class="text-link" href="#" target="_blank" rel="noopener">
-              Visit Website <span class="arrow-glyph" aria-hidden="true">&rarr;</span>
+            <!-- PLACEHOLDER: replace with real Google Play link -->
+            <a class="badge-link" href="#" target="_blank" rel="noopener">
+              <img src="/assets/img/google-play-badge.svg" alt="Get it on Google Play" width="180" height="53">
             </a>
           </div>
         </div>
@@ -69,9 +69,9 @@ require __DIR__ . '/includes/header.php';
             <a class="badge-link" href="#" target="_blank" rel="noopener">
               <img src="/assets/img/app-store-badge.svg" alt="Download on the App Store" width="135" height="40">
             </a>
-            <!-- PLACEHOLDER: replace with a real link, or delete this row if there's only one place to get the app -->
-            <a class="text-link" href="#" target="_blank" rel="noopener">
-              Visit Website <span class="arrow-glyph" aria-hidden="true">&rarr;</span>
+            <!-- PLACEHOLDER: replace with real Google Play link -->
+            <a class="badge-link" href="#" target="_blank" rel="noopener">
+              <img src="/assets/img/google-play-badge.svg" alt="Get it on Google Play" width="180" height="53">
             </a>
           </div>
         </div>

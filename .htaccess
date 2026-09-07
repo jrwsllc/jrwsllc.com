@@ -1,10 +1,14 @@
-# Clean URLs: serve apps.php/books.php/games.php at /apps, /books, /games
-# without exposing the .php extension. Plain Apache mod_rewrite — no
-# framework, no build step, works as-is on Plesk/Apache shared hosting.
+# ============================================================
+# Clean URLs
+# ============================================================
+# Serve apps.php/books.php/games.php/about.php/contact.php at
+# /apps, /books, /games, /about, /contact without exposing the
+# .php extension. Plain Apache mod_rewrite — no framework, no
+# build step, works as-is on Plesk/Apache shared hosting.
 
 RewriteEngine On
 
-# /apps -> apps.php (and same for books, games) if the .php file exists
+# /apps -> apps.php (and same for books, games, about, contact) if the .php file exists
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{DOCUMENT_ROOT}/$1.php -f
@@ -17,3 +21,51 @@ RewriteRule ^([A-Za-z0-9_-]+)/?$ $1.php [L]
 RewriteCond %{REQUEST_METHOD} GET
 RewriteCond %{THE_REQUEST} \s/+(apps|books|games|about|contact)\.php[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
+
+# ============================================================
+# HTTPS enforcement
+# ============================================================
+# Commented out by default: only enable once you've confirmed jrwsllc.com
+# has an active, valid SSL certificate in Plesk (Websites & Domains >
+# jrwsllc.com > SSL/TLS Certificates). Forcing this redirect BEFORE a
+# certificate is issued will make the entire site unreachable. Once
+# confirmed, uncomment the three lines below.
+# RewriteCond %{HTTPS} off
+# RewriteCond %{HTTP_HOST} ^(.*)$
+# RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# ============================================================
+# Security headers
+# ============================================================
+<IfModule mod_headers.c>
+  # Strict-Transport-Security is only honored by browsers on responses
+  # served over HTTPS, so it's safe to send unconditionally even before
+  # HTTPS enforcement above is turned on — plain HTTP visitors just ignore it.
+  Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
+</IfModule>
+
+# ============================================================
+# Hardening
+# ============================================================
+
+# Don't list directory contents when there's no index file.
+Options -Indexes
+
+# Block direct web access to PHP include fragments (header/footer,
+# mail-config.php's SMTP credentials, the vendored PHPMailer library) —
+# these are only ever meant to be require()'d by the page files, not
+# requested directly.
+RewriteRule ^includes/ - [F,L]
+
+# Block direct access to the mail form's error log.
+RewriteRule \.log$ - [F,L]
+
+# Block dotfiles (.git, .gitignore, etc), except .well-known which SSL
+# certificate issuance and other domain-verification checks rely on.
+RewriteCond %{REQUEST_URI} !^/\.well-known/
+RewriteRule (^|/)\. - [F,L]

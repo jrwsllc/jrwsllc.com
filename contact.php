@@ -106,6 +106,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirect_with_result(false);
     }
 
+    // Reject oversized input outright — a legitimate contact message
+    // doesn't need this much room, and it keeps someone from wasting
+    // resources (or the recipient's inbox) with a giant payload.
+    if (mb_strlen($name) > 200 || mb_strlen($email) > 200 || mb_strlen($subject) > 300 || mb_strlen($message) > 5000) {
+        redirect_with_result(false);
+    }
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         redirect_with_result(false);
     }
@@ -168,22 +175,22 @@ require __DIR__ . '/includes/header.php';
     <form class="contact-form reveal" action="/contact" method="POST" novalidate>
       <div class="form-row">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" required autocomplete="name">
+        <input type="text" id="name" name="name" required autocomplete="name" maxlength="200">
       </div>
 
       <div class="form-row">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" required autocomplete="email">
+        <input type="email" id="email" name="email" required autocomplete="email" maxlength="200">
       </div>
 
       <div class="form-row">
         <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject" required>
+        <input type="text" id="subject" name="subject" required maxlength="300">
       </div>
 
       <div class="form-row">
         <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
+        <textarea id="message" name="message" required maxlength="5000"></textarea>
       </div>
 
       <!-- Honeypot: real visitors never see or fill this in. -->

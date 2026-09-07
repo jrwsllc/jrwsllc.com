@@ -4,6 +4,7 @@ require __DIR__ . '/includes/header.php';
 
 <!-- ==================== HERO ==================== -->
 <section class="hero" id="top">
+  <h1 class="sr-only">JRWS LLC — Apps, Books &amp; Games</h1>
   <div class="logo-mark">
     <img src="/assets/img/logo.png" alt="JRWS LLC logo" width="1000" height="1000">
   </div>
@@ -34,7 +35,7 @@ require __DIR__ . '/includes/header.php';
   <div class="container">
     <div class="category-grid stagger">
       <a class="category-square sq-apps reveal" href="/apps">
-        <img class="square-icon" src="/assets/img/icon-apps.png" alt="" aria-hidden="true">
+        <img class="square-icon" src="/assets/img/icon-apps.png" alt="" aria-hidden="true" width="512" height="512">
         <div class="square-content">
           <h3>Apps</h3>
         </div>
@@ -42,7 +43,7 @@ require __DIR__ . '/includes/header.php';
       </a>
 
       <a class="category-square sq-books reveal" href="/books">
-        <img class="square-icon" src="/assets/img/icon-books.png" alt="" aria-hidden="true">
+        <img class="square-icon" src="/assets/img/icon-books.png" alt="" aria-hidden="true" width="512" height="512">
         <div class="square-content">
           <h3>Books</h3>
         </div>
@@ -50,7 +51,7 @@ require __DIR__ . '/includes/header.php';
       </a>
 
       <a class="category-square sq-games reveal" href="/games">
-        <img class="square-icon" src="/assets/img/icon-games.png" alt="" aria-hidden="true">
+        <img class="square-icon" src="/assets/img/icon-games.png" alt="" aria-hidden="true" width="512" height="512">
         <div class="square-content">
           <h3>Games</h3>
         </div>
