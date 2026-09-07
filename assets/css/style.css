@@ -1,0 +1,477 @@
+/* ==========================================================================
+   JRWS LLC — placeholder visual identity
+   Palette: cream paper + deep ink navy + coral accent + teal secondary
+   Fonts: Space Grotesk (headings) / Inter (body)
+   ========================================================================== */
+
+:root {
+  --color-bg: #faf7f2;
+  --color-bg-alt: #f1ece2;
+  --color-ink: #1b1f3b;
+  --color-ink-soft: #4a4e6b;
+  --color-accent: #ff6b4a;
+  --color-accent-dark: #e0512f;
+  --color-teal: #2ec4b6;
+  --color-line: #e3dccd;
+  --color-white: #ffffff;
+
+  --font-heading: 'Space Grotesk', 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  --max-width: 1080px;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: 96px 0;
+}
+
+/* Visible focus states for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------- */
+
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+  gap: 40px;
+}
+
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-mark img {
+  width: clamp(140px, 24vw, 200px);
+  height: auto;
+  border-radius: 20%;
+  box-shadow: 0 16px 32px rgba(27, 31, 59, 0.18);
+}
+
+.scroll-cue {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-ink-soft);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.scroll-cue .chevron {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+  transform: rotate(45deg);
+  animation: bob 1.8s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: rotate(45deg) translate(0, 0); }
+  50% { transform: rotate(45deg) translate(6px, 6px); }
+}
+
+/* --------------------------------------------------------------------
+   About
+   -------------------------------------------------------------------- */
+
+.about {
+  background: var(--color-bg-alt);
+}
+
+.about .container {
+  max-width: 720px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
+  margin-bottom: 12px;
+}
+
+/* --------------------------------------------------------------------
+   Category sections + item grid pattern (shared: apps / books / games)
+   -------------------------------------------------------------------- */
+
+.category-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 48px;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.item-grid.single-item {
+  grid-template-columns: 1fr;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.item-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 28px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.item-box:hover,
+.item-box:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(27, 31, 59, 0.1);
+}
+
+.item-media {
+  border-radius: 10px;
+  height: 140px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--color-white);
+  text-align: center;
+  padding: 12px;
+}
+
+/* PLACEHOLDER: replace with real icon/cover image, gradient blocks stand in for now */
+.item-media.media-apps    { background: linear-gradient(135deg, var(--color-teal), #1f8f84); }
+.item-media.media-books   { background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark)); }
+.item-media.media-games   { background: linear-gradient(135deg, #6a5acd, var(--color-ink)); }
+
+.item-title {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.item-desc {
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.item-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-accent-dark);
+}
+
+.item-arrow .arrow-glyph {
+  transition: transform 0.18s ease;
+}
+
+.item-box:hover .arrow-glyph,
+.item-box:focus-visible .arrow-glyph {
+  transform: translateX(4px);
+}
+
+/* Wrapper stays transparent to the grid so its children lay out as
+   normal grid items once revealed. */
+.extra-items-wrapper {
+  display: contents;
+}
+
+/* Extra items revealed by "View All" — smooth expand */
+.extra-item {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease,
+              margin 0.4s ease, padding 0.4s ease, border-width 0.4s ease;
+  border-width: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+.extra-item.is-visible {
+  max-height: 600px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* "View All" toggle box — wide/short, spans the grid row */
+.view-all-box {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--color-bg-alt);
+  border: 1px dashed var(--color-line);
+  border-radius: var(--radius);
+  padding: 18px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-ink);
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.18s ease;
+}
+
+.view-all-box:hover {
+  background: var(--color-line);
+}
+
+.view-all-box .chevron-down {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--color-accent-dark);
+  border-bottom: 2px solid var(--color-accent-dark);
+  transform: rotate(45deg);
+  transition: transform 0.25s ease;
+}
+
+.view-all-box[aria-expanded="true"] .chevron-down {
+  transform: rotate(225deg);
+}
+
+/* --------------------------------------------------------------------
+   Contact
+   -------------------------------------------------------------------- */
+
+.contact {
+  background: var(--color-bg-alt);
+}
+
+.contact .container {
+  max-width: 620px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.form-row {
+  display: grid;
+  gap: 8px;
+}
+
+.form-row label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-row input,
+.form-row textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 12px 14px;
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  background: var(--color-white);
+  color: var(--color-ink);
+}
+
+.form-row textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Honeypot: hidden from sighted users, still reachable by bots that
+   fill in every field blindly. Not display:none so it isn't as
+   trivially detected/skipped by simple scrapers. */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  background: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  border-radius: 999px;
+  padding: 14px 32px;
+  cursor: pointer;
+  justify-self: start;
+  transition: background 0.18s ease;
+}
+
+.btn:hover {
+  background: var(--color-accent-dark);
+}
+
+.form-message {
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.form-message.success {
+  background: rgba(46, 196, 182, 0.15);
+  color: #1c7d73;
+  border: 1px solid var(--color-teal);
+}
+
+.form-message.error {
+  background: rgba(255, 107, 74, 0.12);
+  color: var(--color-accent-dark);
+  border: 1px solid var(--color-accent);
+}
+
+/* --------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------- */
+
+.site-footer {
+  background: var(--color-ink);
+  color: var(--color-bg);
+  padding: 48px 0;
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.footer-copy {
+  color: #b7bad0;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.footer-social {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.footer-social a {
+  text-decoration: none;
+  color: var(--color-bg);
+  opacity: 0.75;
+}
+
+.footer-social a:hover {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------
+   Responsive — down to ~375px
+   -------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  section {
+    padding: 64px 0;
+  }
+
+  .item-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .view-all-box {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
