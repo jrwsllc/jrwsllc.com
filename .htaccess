@@ -11,9 +11,9 @@ RewriteCond %{DOCUMENT_ROOT}/$1.php -f
 RewriteRule ^([A-Za-z0-9_-]+)/?$ $1.php [L]
 
 # Redirect direct .php requests to the clean URL (canonical, avoids
-# duplicate-content URLs). Limited to GET page requests and excludes
-# contact.php, which is a POST-only form handler that must not be
-# redirected (a 301 would drop the POST body).
+# duplicate-content URLs). Limited to GET requests — contact.php also
+# handles POST (the form submit) and a 301 would drop the POST body,
+# but that's never a risk here since the condition requires GET.
 RewriteCond %{REQUEST_METHOD} GET
-RewriteCond %{THE_REQUEST} \s/+(apps|books|games)\.php[\s?] [NC]
+RewriteCond %{THE_REQUEST} \s/+(apps|books|games|about|contact)\.php[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]

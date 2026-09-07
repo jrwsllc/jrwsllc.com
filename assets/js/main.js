@@ -56,5 +56,40 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", initScrollReveal);
+  /**
+   * Product link popups: any [data-dialog-open] button opens the
+   * <dialog> whose id matches its value. Works for any number of
+   * links inside that dialog — one or several — with no JS changes.
+   */
+  function initLinkDialogs() {
+    document.querySelectorAll("[data-dialog-open]").forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        var dialog = document.getElementById(trigger.getAttribute("data-dialog-open"));
+        if (dialog && typeof dialog.showModal === "function") {
+          dialog.showModal();
+        }
+      });
+    });
+
+    document.querySelectorAll("dialog.link-dialog").forEach(function (dialog) {
+      dialog.querySelectorAll("[data-dialog-close]").forEach(function (closeBtn) {
+        closeBtn.addEventListener("click", function () {
+          dialog.close();
+        });
+      });
+
+      // Click on the backdrop (the dialog element itself, outside
+      // .dialog-inner) closes it.
+      dialog.addEventListener("click", function (event) {
+        if (event.target === dialog) {
+          dialog.close();
+        }
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initScrollReveal();
+    initLinkDialogs();
+  });
 })();

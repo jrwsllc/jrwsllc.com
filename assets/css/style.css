@@ -293,17 +293,10 @@ textarea:focus-visible {
   display: inline-block;
 }
 
-/* --------------------------------------------------------------------
-   About
-   -------------------------------------------------------------------- */
-
-.about {
-  background: var(--color-bg-alt);
-}
-
-.about .container {
-  max-width: 720px;
-  text-align: center;
+/* Readable prose column, used on about.php */
+.prose {
+  max-width: 680px;
+  margin: 0 auto;
 }
 
 .eyebrow {
@@ -314,12 +307,6 @@ textarea:focus-visible {
   text-transform: uppercase;
   color: var(--color-accent-dark);
   margin-bottom: 12px;
-}
-
-.category-header {
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto 48px;
 }
 
 /* --------------------------------------------------------------------
@@ -338,73 +325,62 @@ textarea:focus-visible {
   aspect-ratio: 1 / 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  background: var(--color-card);
-  border: 1px solid var(--color-line);
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
   padding: 32px;
   text-decoration: none;
-  color: inherit;
+  color: var(--color-white);
   overflow: hidden;
   isolation: isolate;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Decorative colored glow tucked in the corner of each square */
+/* Each category gets its own unique gradient */
+.category-square.sq-apps  { background: linear-gradient(135deg, #35d6c4, #1c7f76); }
+.category-square.sq-books { background: linear-gradient(135deg, #ff8a68, #c8431f); }
+.category-square.sq-games { background: linear-gradient(135deg, #9a8bf7, #3d2f7a); }
+
+/* Decorative glossy highlight, purely aesthetic */
 .category-square::before {
   content: "";
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.28;
-  top: -50px;
-  right: -50px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.35), transparent 70%);
+  top: -90px;
+  left: -70px;
   z-index: -1;
   transition: opacity 0.3s ease;
+  opacity: 0.7;
 }
-
-.category-square.sq-apps::before  { background: var(--color-teal); }
-.category-square.sq-books::before { background: var(--color-accent); }
-.category-square.sq-games::before { background: #7c6cf0; }
 
 .category-square:hover,
 .category-square:focus-visible {
   transform: translateY(-6px);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
-  border-color: var(--color-accent);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
 }
 
 .category-square:hover::before,
 .category-square:focus-visible::before {
-  opacity: 0.45;
+  opacity: 1;
 }
 
 .square-icon {
-  align-self: flex-start;
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-heading);
-  font-size: 0.65rem;
-  color: var(--color-white);
-  text-align: center;
-  padding: 6px;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  filter: brightness(0) invert(1) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.25));
 }
 
 .square-content h3 {
-  font-size: 1.4rem;
-  margin-bottom: 8px;
-}
-
-.square-content p {
-  color: var(--color-ink-soft);
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   margin-bottom: 0;
+  color: var(--color-white);
 }
 
 .tile-arrow {
@@ -417,8 +393,8 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-accent);
-  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-ink);
   font-size: 1.2rem;
   font-weight: 700;
   transition: transform 0.25s ease, background 0.25s ease;
@@ -427,6 +403,80 @@ textarea:focus-visible {
 .category-square:hover .tile-arrow,
 .category-square:focus-visible .tile-arrow {
   transform: translate(4px, -4px);
+  background: var(--color-white);
+}
+
+/* --------------------------------------------------------------------
+   Link tiles (homepage) — single wide box linking to /about or /contact.
+   -------------------------------------------------------------------- */
+
+.link-tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 36px 88px 36px 40px;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.link-tile::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.25;
+  top: -80px;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.link-tile-about::before    { background: var(--color-teal); right: -60px; }
+.link-tile-contact::before  { background: var(--color-accent); right: -60px; }
+
+.link-tile:hover,
+.link-tile:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  border-color: var(--color-accent);
+}
+
+.link-tile:hover::before,
+.link-tile:focus-visible::before {
+  opacity: 0.45;
+}
+
+.link-tile-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+.link-tile-content p {
+  color: var(--color-ink-soft);
+  margin-bottom: 0;
+}
+
+.link-tile .tile-arrow {
+  position: absolute;
+  right: 24px;
+  bottom: 50%;
+  transform: translateY(50%);
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.link-tile:hover .tile-arrow,
+.link-tile:focus-visible .tile-arrow {
+  transform: translateY(50%) translateX(4px);
   background: var(--color-accent-dark);
 }
 
@@ -451,6 +501,7 @@ textarea:focus-visible {
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 100%;
   background: var(--color-card);
   border: 1px solid var(--color-line);
   border-radius: var(--radius);
@@ -458,6 +509,9 @@ textarea:focus-visible {
   padding-bottom: 64px;
   text-decoration: none;
   color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
@@ -520,6 +574,122 @@ textarea:focus-visible {
   transform: translate(3px, -3px);
   background: var(--color-accent);
   color: var(--color-white);
+}
+
+/* --------------------------------------------------------------------
+   Link dialog — popup opened from a product box, listing every outbound
+   link for that product (a product can have more than one: App Store,
+   a website, etc). Native <dialog> gives focus-trapping, Escape-to-close
+   and a ::backdrop for free.
+   -------------------------------------------------------------------- */
+
+dialog.link-dialog {
+  border: none;
+  border-radius: 20px;
+  padding: 0;
+  background: var(--color-card);
+  color: var(--color-ink);
+  width: calc(100% - 48px);
+  max-width: 420px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+dialog.link-dialog::backdrop {
+  background: rgba(5, 6, 15, 0.72);
+  backdrop-filter: blur(3px);
+}
+
+dialog.link-dialog[open] {
+  animation: dialog-pop 0.2s ease;
+}
+
+@keyframes dialog-pop {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.dialog-inner {
+  position: relative;
+  padding: 32px;
+}
+
+.dialog-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-ink);
+  border: none;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dialog-close:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.dialog-inner .item-media {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+}
+
+.dialog-inner h3 {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+
+.dialog-desc {
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.dialog-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.badge-link img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.text-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-line);
+  color: var(--color-ink);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-accent);
+}
+
+.text-link .arrow-glyph {
+  color: var(--color-accent-dark);
 }
 
 /* --------------------------------------------------------------------
@@ -706,6 +876,10 @@ textarea:focus-visible {
   .tile-arrow {
     right: 20px;
     bottom: 20px;
+  }
+
+  .link-tile {
+    padding: 28px 72px 28px 28px;
   }
 }
 

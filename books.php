@@ -25,29 +25,71 @@ require __DIR__ . '/includes/header.php';
 <section>
   <div class="container">
     <div class="item-grid stagger">
-      <!-- PLACEHOLDER: replace with real Amazon link -->
-      <a class="item-box reveal" href="#" target="_blank" rel="noopener" aria-label="Leo Notebook — view on Amazon">
+      <button type="button" class="item-box reveal" data-dialog-open="dialog-leo-notebook">
         <div class="item-media media-books" aria-hidden="true">Leo Notebook cover</div>
         <h3 class="item-title">Leo Notebook</h3>
         <p class="item-desc">A guided notebook for daily reflection and planning, designed to be simple enough to actually stick with.</p>
         <span class="item-arrow" aria-hidden="true">&rarr;</span>
-      </a>
+      </button>
 
-      <!-- PLACEHOLDER: replace with real Amazon link -->
-      <a class="item-box reveal" href="#" target="_blank" rel="noopener" aria-label="The School Rewind — view on Amazon">
+      <dialog id="dialog-leo-notebook" class="link-dialog" aria-labelledby="dialog-leo-notebook-title">
+        <div class="dialog-inner">
+          <button type="button" class="dialog-close" data-dialog-close aria-label="Close">&times;</button>
+          <div class="item-media media-books" aria-hidden="true">Leo Notebook cover</div>
+          <h3 id="dialog-leo-notebook-title">Leo Notebook</h3>
+          <p class="dialog-desc">Choose where to get it:</p>
+          <div class="dialog-links">
+            <!-- PLACEHOLDER: replace with real Amazon link -->
+            <a class="text-link" href="#" target="_blank" rel="noopener">
+              View on Amazon <span class="arrow-glyph" aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </dialog>
+
+      <button type="button" class="item-box reveal" data-dialog-open="dialog-school-rewind">
         <div class="item-media media-books" aria-hidden="true">The School Rewind cover</div>
         <h3 class="item-title">The School Rewind</h3>
         <p class="item-desc">A nostalgic look back at school life, told with humor and heart for anyone who's ever sat through a hallway pass.</p>
         <span class="item-arrow" aria-hidden="true">&rarr;</span>
-      </a>
+      </button>
 
-      <!-- PLACEHOLDER: replace with real Amazon link -->
-      <a class="item-box reveal" href="#" target="_blank" rel="noopener" aria-label="The Coin — view on Amazon">
+      <dialog id="dialog-school-rewind" class="link-dialog" aria-labelledby="dialog-school-rewind-title">
+        <div class="dialog-inner">
+          <button type="button" class="dialog-close" data-dialog-close aria-label="Close">&times;</button>
+          <div class="item-media media-books" aria-hidden="true">The School Rewind cover</div>
+          <h3 id="dialog-school-rewind-title">The School Rewind</h3>
+          <p class="dialog-desc">Choose where to get it:</p>
+          <div class="dialog-links">
+            <!-- PLACEHOLDER: replace with real Amazon link -->
+            <a class="text-link" href="#" target="_blank" rel="noopener">
+              View on Amazon <span class="arrow-glyph" aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </dialog>
+
+      <button type="button" class="item-box reveal" data-dialog-open="dialog-the-coin">
         <div class="item-media media-books" aria-hidden="true">The Coin cover</div>
         <h3 class="item-title">The Coin</h3>
         <p class="item-desc">A short story about a single coin that changes hands — and changes something in everyone who holds it.</p>
         <span class="item-arrow" aria-hidden="true">&rarr;</span>
-      </a>
+      </button>
+
+      <dialog id="dialog-the-coin" class="link-dialog" aria-labelledby="dialog-the-coin-title">
+        <div class="dialog-inner">
+          <button type="button" class="dialog-close" data-dialog-close aria-label="Close">&times;</button>
+          <div class="item-media media-books" aria-hidden="true">The Coin cover</div>
+          <h3 id="dialog-the-coin-title">The Coin</h3>
+          <p class="dialog-desc">Choose where to get it:</p>
+          <div class="dialog-links">
+            <!-- PLACEHOLDER: replace with real Amazon link -->
+            <a class="text-link" href="#" target="_blank" rel="noopener">
+              View on Amazon <span class="arrow-glyph" aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </dialog>
     </div>
   </div>
 </section>

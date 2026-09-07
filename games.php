@@ -25,12 +25,26 @@ require __DIR__ . '/includes/header.php';
 <section>
   <div class="container">
     <div class="item-grid single-item stagger">
-      <a class="item-box reveal" href="https://orcsworld.net" target="_blank" rel="noopener" aria-label="Orc's World — visit orcsworld.net">
+      <button type="button" class="item-box reveal" data-dialog-open="dialog-orcs-world">
         <div class="item-media media-games" aria-hidden="true">Orc's World banner</div>
         <h3 class="item-title">Orc's World</h3>
-        <p class="item-desc">Our indie Minecraft server — survival, community builds, and the occasional orc invasion. Visit the site for connection details.</p>
+        <p class="item-desc">Our indie Minecraft server — survival, community builds, and the occasional orc invasion.</p>
         <span class="item-arrow" aria-hidden="true">&rarr;</span>
-      </a>
+      </button>
+
+      <dialog id="dialog-orcs-world" class="link-dialog" aria-labelledby="dialog-orcs-world-title">
+        <div class="dialog-inner">
+          <button type="button" class="dialog-close" data-dialog-close aria-label="Close">&times;</button>
+          <div class="item-media media-games" aria-hidden="true">Orc's World banner</div>
+          <h3 id="dialog-orcs-world-title">Orc's World</h3>
+          <p class="dialog-desc">Choose where to go:</p>
+          <div class="dialog-links">
+            <a class="text-link" href="https://orcsworld.net" target="_blank" rel="noopener">
+              Visit orcsworld.net <span class="arrow-glyph" aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </dialog>
     </div>
   </div>
 </section>
