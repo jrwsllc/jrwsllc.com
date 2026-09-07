@@ -533,20 +533,16 @@ textarea:focus-visible {
 }
 
 .item-media {
-  border-radius: 10px;
+  display: block;
+  width: 100%;
   height: 140px;
   margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  color: var(--color-white);
-  text-align: center;
-  padding: 12px;
+  border-radius: 10px;
+  object-fit: cover;
+  /* Fallback color while the image decodes (or if it fails to load) */
+  background: linear-gradient(135deg, var(--color-teal), #1f8f84);
 }
 
-/* PLACEHOLDER: replace with real icon/cover image, gradient blocks stand in for now */
 .item-media.media-apps    { background: linear-gradient(135deg, var(--color-teal), #1f8f84); }
 .item-media.media-books   { background: linear-gradient(135deg, var(--color-accent), #c8431f); }
 .item-media.media-games   { background: linear-gradient(135deg, #7c6cf0, #2f2560); }

@@ -26,7 +26,7 @@ require __DIR__ . '/includes/header.php';
   <div class="container">
     <div class="item-grid single-item stagger">
       <button type="button" class="item-box reveal" data-dialog-open="dialog-orcs-world">
-        <div class="item-media media-games" aria-hidden="true">Orc's World banner</div>
+        <img class="item-media media-games" src="/assets/img/icon-orcs-world-banner.webp" alt="Orc's World banner" width="900" height="420">
         <h3 class="item-title">Orc's World</h3>
         <p class="item-desc">Our indie Minecraft server — survival, community builds, and the occasional orc invasion.</p>
         <span class="item-arrow" aria-hidden="true">&rarr;</span>
@@ -35,7 +35,7 @@ require __DIR__ . '/includes/header.php';
       <dialog id="dialog-orcs-world" class="link-dialog" aria-labelledby="dialog-orcs-world-title">
         <div class="dialog-inner">
           <button type="button" class="dialog-close" data-dialog-close aria-label="Close">&times;</button>
-          <div class="item-media media-games" aria-hidden="true">Orc's World banner</div>
+          <img class="item-media media-games" src="/assets/img/icon-orcs-world-banner.webp" alt="Orc's World banner" width="900" height="420">
           <h3 id="dialog-orcs-world-title">Orc's World</h3>
           <p class="dialog-desc">Choose where to go:</p>
           <div class="dialog-links">
